@@ -1,0 +1,127 @@
+import 'dart:io';
+
+main() {
+  int choice;
+  String? title;
+  int balance = 0;
+  do {
+    print('1 for Acc Creataion');
+    print('2 for credit');
+    print('3 for debit');
+    print('4 for balance');
+    print('5 for detail');
+    print('6 for exit');
+    stdout.write('Enter your choice ');
+    String? choiceInStr = stdin.readLineSync();
+    choice = int.parse(choiceInStr!);
+    switch (choice) {
+      case 1:
+        print('enter title ');
+        title = stdin.readLineSync();
+        balance = 500;
+        break;
+      case 2:
+        stdout.write('Enter amount ');
+        int amount = int.parse(stdin.readLineSync()!);
+        balance = balance + amount;
+        break;
+      case 3:
+        stdout.write('Enter amount ');
+        int amount = int.parse(stdin.readLineSync()!);
+        if (amount > balance) {
+          print('Low Balance $balance');
+        } else {
+          balance = balance - amount;
+        }
+        break;
+      case 4:
+        print('Account Balance is $balance');
+        break;
+      case 5:
+        print('Account Title is $title');
+        print('Account Balance is $balance');
+        break;
+      case 6:
+        print('Thank you for using BMS');
+        break;
+      default:
+        print('Invalid choice');
+        break;
+    }
+  } while (choice != 6);
+}
+
+
+
+
+
+
+import 'dart:io';
+
+void main() {
+  int choice;
+
+  do {
+    print('1 for Acc details');
+    print('2 for credit');
+    print('3 for debit');
+    print('4 for balance');
+
+    print('5 for exit');
+    stdout.write('Enter your choice ');
+    String? choiceInStr = stdin.readLineSync();
+    choice = int.parse(choiceInStr!);
+
+    switch (choice) {
+      case 1:
+        print(account());
+        break;
+      case 2:
+        print(credit(6000));
+        break;
+      case 3:
+        print(debit(4000));
+        break;
+      case 4:
+        print(balancecheck());
+        break;
+      case 5:
+        print('Thank you for using BMS');
+        break;
+
+      default:
+        print('Invalid choice');
+        break;
+    }
+  } while (choice < 5);
+}
+
+dynamic account() {
+  var details = <String, dynamic>{
+    'Name': 'M.Usman',
+    'CNIC': 13432525,
+    'Age': 22
+  };
+  return details;
+}
+
+int credit(int amount) {
+  int balance = 2000;
+  // stdout.write('Enter Amount');
+  // amount = int.parse(stdin.readLineSync()!);
+  int total = balance + amount;
+  return total;
+}
+
+int debit(int amount) {
+  int balance = 2000;
+  // stdout.write('Enter Amount');
+  // amount = int.parse(stdin.readLineSync()!);
+  int total = balance - amount;
+  return total;
+}
+
+int balancecheck() {
+  int balance = 2000;
+  return balance;
+}
